@@ -6,8 +6,6 @@ var config = JSON.parse(fs.readFileSync('freezerwatch.json', 'utf8'));
 
 var client = new lacrosse.Client(config);
 
-// XXX get Rakefile into place and into CI
-
 // XXX make into command line with no extension - look for example and crib
 
 //client.on("login" );
