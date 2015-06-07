@@ -40,9 +40,7 @@ fi
 Device IDs
 ----------
 
-You can find device IDs by logging into lacrossealerts.com/login and
-looking at the link that your 'Download' button points to.
-
+You can find device IDs by logging into lacrossealerts.com/login and looking at the link that your 'Download' button points to.
 
 Note
 ----
