@@ -21,7 +21,7 @@ function parseDeviceIds() {
     var switches = [
         ['-h', '--help', 'Shows help sections'],
         ['-l', '--live', 'Report on liveness of the sensor system.  Returns 0 exit code if all sensors are reading within the last day and have full batteries.'],
-        ['-d', '--device STRING', "Which device to monitor--specify this argument multiple times to monitor multiple devices.  You can find device IDs by logging into lacrossealerts.com/login and looking at the link that your 'Download' button points to."],
+        ['-d STRING', '--device STRING', "Which device to monitor--specify this argument multiple times to monitor multiple devices.  You can find device IDs by logging into lacrossealerts.com/login and looking at the link that your 'Download' button points to."],
     ];
 
     // Create a new OptionParser.
@@ -39,6 +39,11 @@ function parseDeviceIds() {
 
     parser.on('live', function() {
         mode = 'live';
+    });
+
+    parser.on('device', function(name, deviceId) {
+        console.log("Parsed device Id " + deviceId);
+        deviceIds.push(deviceId);
     });
 
     parser.parse(process.argv);
