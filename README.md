@@ -16,7 +16,7 @@ The --live option will exit with a zero status if all of the devices you passed 
 Config
 ------
 
-Create a file called freezerwatch.json:
+Create a file called freezerwatch.json with the login information you use for lacrossealerts.com:
 ```json
 {
     "username": "my@email.com",
