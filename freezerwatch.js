@@ -16,9 +16,12 @@ var client = new lacrosse.Client(config);
 //     }
 // });
 
-// XXX get device IDs from command line
+if (process.argv[2] != "--live") {
+    console.log("Usage: freezerwatch --live --device=\"123\" --device=\"456\" --device=\"789\"");
+    return process.exit(1);
+}
 
-// XXX reject if first argument isn't --live, to allow for future expansion
+// XXX get device IDs from command line
 
 // XXX get gulp-file with node-quality to replace Rakefile with Quality
 
