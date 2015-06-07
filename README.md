@@ -7,10 +7,9 @@ You might find this code useful, but this doesn't actually work yet.  If you mak
 freezerwatch
 ============
 
-Returns health status from La Crosse Alerts sensors.
+Want to monitor a fridge/freezer and make sure the door isn't left open or it doesn't die or lose power?  La Crosse Technology sells alarms that do that.
 
-Useful for adding to your monitoring system--i.e., answers the
-question "are my alarms actually live and working?"
+Want a quick command-line way to make sure those alarms are up and working?  This utility can help.
 
 The --live option will exit with a zero status if all of the devices you passed in are found and registered, we have readings within te last day, and all devices have adequate battery.
 
