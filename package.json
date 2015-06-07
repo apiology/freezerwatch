@@ -1,0 +1,22 @@
+{
+    "name": "freezerwatch",
+    "version": "0.0.1",
+    "description": "Checks whether Lacrosse Alert sensors are giving data",
+    "main": "freezerwatch.js",
+     "keywords": [
+        "sensor",
+        "stream",
+        "temperature",
+        "humidity",
+        "lacrosse"
+    ],
+    "author": "Vince Broz",
+    "license": "BSD-2-Clause",
+    "bugs": {
+        "url": "https://github.com/apiology/freezerwatch/issues"
+    },
+    "homepage": "https://github.com/apiology/freezerwatch",
+    "dependencies": {
+        "lacrosse": "~0.1.1"
+    }
+}
