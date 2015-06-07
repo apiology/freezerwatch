@@ -10,18 +10,6 @@ var client = new lacrosse.Client(config);
 
 var optparse = require('optparse');
 
-//client.on("login" );
-// , function() {
-//     console.log("you have %s devices.", client.devices.length);
-//     for (var d in client.devices) {
-//         console.log(d);
-//     }
-// });
-
-// XXX: add JSHint
-
-// XXX: Crib style hints from optparse
-
 function usage(usageString, code) {
     console.log(usageString.toString());
     return process.exit(code);
@@ -60,22 +48,35 @@ function parseDeviceIds() {
 
 var options = parseDeviceIds(process.argv);
 
+console.log("options is " + JSON.stringify(options));
+console.log("deviceIds is " + options.deviceIds);
+
 if (!options.mode) {
     usage(options.help, 1);
 }
-
+    
 // XXX get device IDs from command line
-
-// XXX get gulp-file with node-quality to replace Rakefile with Quality
+options.deviceIds.forEach(function(deviceId) {
+    console.log("Pulling data for " + deviceId);
+    var device = new client.Device(deviceId);
+    console.log("created device");
+    var stream = device.createReadStream();
+    console.log("created stream");
+    stream.on("data", console.log);
+    stream.on("error", console.log);
+    console.log("events registered");
+});
 
 // XXX get last reading from each device
 
-var device = new client.Device("deviceid");
-console.log("created device");
-var stream = device.createReadStream();
-console.log("created stream");
-stream.on("data", console.log);
-stream.on("error", console.log);
-console.log("events registered");
-
 // XXX publish
+
+// XXX: add JSHint to rake quality
+
+// XXX: Brainstorm errors to handle, add (manual) tests
+
+// XXX: Crib style hints from optparse
+
+// XXX: get gulp-file with node-quality to replace Rakefile with Quality
+
+// XXX: Figure out style help tool 
