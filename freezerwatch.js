@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var lacrosse = require("lacrosse");
 
 var fs = require('fs');
@@ -7,8 +9,6 @@ var config = JSON.parse(fs.readFileSync('freezerwatch.json', 'utf8'));
 var client = new lacrosse.Client(config);
 
 var optparse = require('optparse');
-
-// XXX make into command line with no extension - look for example and crib
 
 //client.on("login" );
 // , function() {
@@ -77,3 +77,5 @@ console.log("created stream");
 stream.on("data", console.log);
 stream.on("error", console.log);
 console.log("events registered");
+
+// XXX publish

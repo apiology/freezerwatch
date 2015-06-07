@@ -2,8 +2,11 @@
     "name": "freezerwatch",
     "version": "0.0.1",
     "description": "Checks whether Lacrosse Alert sensors are giving data",
-    "main": "freezerwatch.js",
-     "keywords": [
+    "preferGlobal": true,
+    "bin": {
+        "freezerwatch": "freezerwatch.js"
+    },
+    "keywords": [
         "sensor",
         "stream",
         "temperature",
