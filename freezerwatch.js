@@ -61,13 +61,24 @@ options.deviceIds.forEach(function(deviceId) {
     console.log("Pulling data for " + deviceId);
     var device = new client.Device(deviceId);
     console.log("created device");
-    var stream = device.createReadStream();
+    var s = device.createSingleReadStream();
     console.log("created stream");
-    stream.on("data", console.log);
-    stream.on("error", console.log);
+    s.on("data", console.log);
+    //stream.on("error", console.log);
     console.log("events registered");
 });
 
+// XXX: Consolidate answers into an array and output
+
+// XXX: Write function to determine exit value for one
+
+// XXX: Write code to consolidate individual exit values and output final one
+
+// XXX: Test out
+
+// XXX: Push
+
+// XXX: Get working in VLD and push changes
 
 // XXX: Figure out why I'm getting multiple responses per item
 
