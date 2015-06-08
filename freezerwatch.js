@@ -100,13 +100,16 @@ async.map(options.deviceIds,
                   throw err;
               } else {
                   console.log("result is " + JSON.stringify(result));
-                  console.log("Live map is " + result.map(isLive));
+                  everythingIsLive = result.map(isLive).reduce(function(everythingElseLive, thisItemLive) {
+                      return everythingElseLive && thisItemLive;
+                  });
+                  if (everythingIsLive) {
+                      process.exit(0);
+                  } else {
+                      process.exit(1);
+                  }
               }
           });
-
-// XXX: Write code to consolidate individual exit values and output final one
-
-// XXX: Test out
 
 // XXX: Push
 
