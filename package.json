@@ -21,6 +21,7 @@
     "homepage": "https://github.com/apiology/freezerwatch",
     "dependencies": {
         "lacrosse": "~0.1",
-        "optparse": "~1.0"
+        "optparse": "~1.0",
+        "async": "~1.2"
     }
 }

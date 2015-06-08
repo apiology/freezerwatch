@@ -10,6 +10,8 @@ var client = new lacrosse.Client(config);
 
 var optparse = require('optparse');
 
+var async = require('async');
+
 function usage(usageString, code) {
     console.log(usageString.toString());
     return process.exit(code);
@@ -57,18 +59,32 @@ if (!options.mode) {
     usage(options.help, 1);
 }
 
-options.deviceIds.forEach(function(deviceId) {
-    console.log("Pulling data for " + deviceId);
-    var device = new client.Device(deviceId);
-    console.log("created device");
-    var s = device.createSingleReadStream();
-    console.log("created stream");
-    s.on("data", console.log);
-    //stream.on("error", console.log);
-    console.log("events registered");
-});
 
-// XXX: Consolidate answers into an array and output
+async.map(options.deviceIds,
+                    function(deviceId, cb) {
+                        console.log("Pulling data for " + deviceId);
+                        var device = new client.Device(deviceId);
+                        console.log("created device " + deviceId);
+                        var s = device.createSingleReadStream();
+                        console.log("created stream");
+                        var called = false; // XXX: shouldn't need this
+                        s.on("data", function(data) {
+                            if (!called) {
+                                cb(null, data);
+                            }
+                            called = true;});
+                        s.on("error", function(error) { cb(error, nil); });
+                        //stream.on("error", console.log);
+                        console.log("events registered");
+                    },
+                    function(err, result) {
+                        if (err) {
+                            console.log("error is " + JSON.stringify(err));
+                            throw err;
+                        } else {
+                            console.log("result is " + JSON.stringify(result));
+                        }
+                    });
 
 // XXX: Write function to determine exit value for one
 
