@@ -59,6 +59,23 @@ if (!options.mode) {
     usage(options.help, 1);
 }
 
+function toDate(str) {
+    var d = new Date(str);
+    console.log("Out of string " + str + ", parsed out " + d);
+    return d;
+}
+
+function yesterday() {
+    var d = new Date();
+    d.setDate(d.getDate() - 1);
+    return d;
+}
+
+function isLive(reading) {
+    console.log("parsing this reading: " + JSON.stringify(reading));
+    return new Date(reading.timestamp) > yesterday() &&
+        !reading.lowBattery;
+}
 
 async.map(options.deviceIds,
           function(deviceId, cb) {
@@ -83,10 +100,9 @@ async.map(options.deviceIds,
                   throw err;
               } else {
                   console.log("result is " + JSON.stringify(result));
+                  console.log("Live map is " + result.map(isLive));
               }
           });
-
-// XXX: Write function to determine exit value for one
 
 // XXX: Write code to consolidate individual exit values and output final one
 
