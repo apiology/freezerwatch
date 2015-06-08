@@ -56,7 +56,7 @@ function parseDeviceIds() {
         mode = 'live';
     });
 
-    parser.on('verbsoe', function() {
+    parser.on('verbose', function() {
         verbose = true;
     });
 
