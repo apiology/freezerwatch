@@ -61,30 +61,30 @@ if (!options.mode) {
 
 
 async.map(options.deviceIds,
-                    function(deviceId, cb) {
-                        console.log("Pulling data for " + deviceId);
-                        var device = new client.Device(deviceId);
-                        console.log("created device " + deviceId);
-                        var s = device.createSingleReadStream();
-                        console.log("created stream");
-                        var called = false; // XXX: shouldn't need this
-                        s.on("data", function(data) {
-                            if (!called) {
-                                cb(null, data);
-                            }
-                            called = true;});
-                        s.on("error", function(error) { cb(error, nil); });
-                        //stream.on("error", console.log);
-                        console.log("events registered");
-                    },
-                    function(err, result) {
-                        if (err) {
-                            console.log("error is " + JSON.stringify(err));
-                            throw err;
-                        } else {
-                            console.log("result is " + JSON.stringify(result));
-                        }
-                    });
+          function(deviceId, cb) {
+              console.log("Pulling data for " + deviceId);
+              var device = new client.Device(deviceId);
+              console.log("created device " + deviceId);
+              var s = device.createSingleReadStream();
+              console.log("created stream");
+              var called = false; // XXX: shouldn't need this
+              s.on("data", function(data) {
+                  if (!called) {
+                      cb(null, data);
+                  }
+                  called = true;});
+              s.on("error", function(error) { cb(error, nil); });
+              //stream.on("error", console.log);
+              console.log("events registered");
+          },
+          function(err, result) {
+              if (err) {
+                  console.log("error is " + JSON.stringify(err));
+                  throw err;
+              } else {
+                  console.log("result is " + JSON.stringify(result));
+              }
+          });
 
 // XXX: Write function to determine exit value for one
 
