@@ -56,8 +56,7 @@ var options = parseDeviceIds(process.argv);
 if (!options.mode) {
     usage(options.help, 1);
 }
-    
-// XXX get device IDs from command line
+
 options.deviceIds.forEach(function(deviceId) {
     console.log("Pulling data for " + deviceId);
     var device = new client.Device(deviceId);
@@ -69,9 +68,16 @@ options.deviceIds.forEach(function(deviceId) {
     console.log("events registered");
 });
 
-// XXX get last reading from each device
 
-// XXX publish
+// XXX: Figure out why I'm getting multiple responses per item
+
+// XXX: Refactor node-lacrosse improvements
+
+// XXX: Create node-lacrosse pull request
+
+// XXX: Point to my own snapshot of node-lacrosse
+
+// XXX: publish
 
 // XXX: add JSHint to rake quality
 
