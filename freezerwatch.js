@@ -84,7 +84,7 @@ async.map(options.deviceIds,
               console.log("created device " + deviceId);
               var s = device.createSingleReadStream();
               console.log("created stream");
-              var called = false; // XXX: shouldn't need this
+              var called = false;
               s.on("data", function(data) {
                   if (!called) {
                       cb(null, data);
@@ -113,6 +113,8 @@ async.map(options.deviceIds,
 // XXX: Get working in VLD and push changes
 
 // XXX: Figure out why I'm getting multiple responses per item
+
+// XXX: Get rid of double call protection above
 
 // XXX: Refactor node-lacrosse improvements
 
