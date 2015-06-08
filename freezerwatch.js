@@ -128,10 +128,6 @@ async.map(options.deviceIds,
               }
           });
 
-// XXX: Figure out why I'm getting multiple responses per item
-
-// XXX: Get rid of double call protection above
-
 // XXX: Refactor node-lacrosse improvements
 
 // XXX: Create node-lacrosse pull request
