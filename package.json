@@ -20,7 +20,7 @@
     },
     "homepage": "https://github.com/apiology/freezerwatch",
     "dependencies": {
-        "lacrosse": "~0.1",
+        "lacrosse": "https://github.com/apiology/node-lacrosse/tarball/74770f3820c01868185a369540ac1483d0b8c8ea",
         "optparse": "~1.0",
         "async": "~1.2",
         "osenv": "~0.1"

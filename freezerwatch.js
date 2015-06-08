@@ -128,13 +128,11 @@ async.map(options.deviceIds,
               }
           });
 
-// XXX: Refactor node-lacrosse improvements
-
-// XXX: Create node-lacrosse pull request
-
 // XXX: Point to my own snapshot of node-lacrosse
 
 // XXX: publish
+
+// XXX: Remove disclaimer from README
 
 // XXX: add JSHint to rake quality
 
