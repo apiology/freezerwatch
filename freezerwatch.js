@@ -16,6 +16,14 @@ var optparse = require('optparse');
 
 var async = require('async');
 
+var verbose = false;
+
+function debug(message) {
+    if (verbose) {
+        console.log(message);
+    }
+}
+
 function usage(usageString, code) {
     console.log(usageString.toString());
     return process.exit(code);
@@ -27,6 +35,7 @@ function parseDeviceIds() {
     var switches = [
         ['-h', '--help', 'Shows help sections'],
         ['-l', '--live', 'Report on liveness of the sensor system.  Returns 0 exit code if all sensors are reading within the last day and have full batteries.'],
+        ['-v', '--verbose', 'Report debugging information.'],
         ['-d STRING', '--device STRING', "Which device to monitor--specify this argument multiple times to monitor multiple devices.  You can find device IDs by logging into lacrossealerts.com/login and looking at the link that your 'Download' button points to."],
     ];
 
@@ -47,8 +56,12 @@ function parseDeviceIds() {
         mode = 'live';
     });
 
+    parser.on('verbsoe', function() {
+        verbose = true;
+    });
+
     parser.on('device', function(name, deviceId) {
-        console.log("Parsed device Id " + deviceId);
+        debug("Parsed device Id " + deviceId);
         deviceIds.push(deviceId);
     });
 
@@ -76,18 +89,18 @@ function yesterday() {
 }
 
 function isLive(reading) {
-    console.log("parsing this reading: " + JSON.stringify(reading));
+    debug("parsing this reading: " + JSON.stringify(reading));
     return new Date(reading.timestamp) > yesterday() &&
         !reading.lowBattery;
 }
 
 async.map(options.deviceIds,
           function(deviceId, cb) {
-              console.log("Pulling data for " + deviceId);
+              debug("Pulling data for " + deviceId);
               var device = new client.Device(deviceId);
-              console.log("created device " + deviceId);
+              debug("created device " + deviceId);
               var s = device.createSingleReadStream();
-              console.log("created stream");
+              debug("created stream");
               var called = false;
               s.on("data", function(data) {
                   if (!called) {
@@ -96,14 +109,14 @@ async.map(options.deviceIds,
                   called = true;});
               s.on("error", function(error) { cb(error, nil); });
               //stream.on("error", console.log);
-              console.log("events registered");
+              debug("events registered");
           },
           function(err, result) {
               if (err) {
-                  console.log("error is " + JSON.stringify(err));
+                  debug("error is " + JSON.stringify(err));
                   throw err;
               } else {
-                  console.log("result is " + JSON.stringify(result));
+                  debug("result is " + JSON.stringify(result));
                   everythingIsLive = result.map(isLive).reduce(function(everythingElseLive, thisItemLive) {
                       return everythingElseLive && thisItemLive;
                   });
@@ -114,8 +127,6 @@ async.map(options.deviceIds,
                   }
               }
           });
-
-// XXX: Get working in VLD and push changes
 
 // XXX: Figure out why I'm getting multiple responses per item
 
