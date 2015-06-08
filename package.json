@@ -22,6 +22,7 @@
     "dependencies": {
         "lacrosse": "~0.1",
         "optparse": "~1.0",
-        "async": "~1.2"
+        "async": "~1.2",
+        "osenv": "~0.1"
     }
 }

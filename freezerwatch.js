@@ -4,7 +4,11 @@ var lacrosse = require("lacrosse");
 
 var fs = require('fs');
 
-var config = JSON.parse(fs.readFileSync('freezerwatch.json', 'utf8'));
+var osenv = require('osenv');
+
+var homedir = osenv.home();
+
+var config = JSON.parse(fs.readFileSync(homedir + '/private/freezerwatch.json', 'utf8'));
 
 var client = new lacrosse.Client(config);
 
@@ -110,8 +114,6 @@ async.map(options.deviceIds,
                   }
               }
           });
-
-// XXX: Push
 
 // XXX: Get working in VLD and push changes
 
