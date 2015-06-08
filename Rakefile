@@ -7,7 +7,7 @@ Quality::Rake::Task.new do |t|
   #
   # extra_files are assumed to be Ruby files, for starters
   t.extra_files = ['*.js', 'Rakefile']
-  t.skip_tools = %w(rubocop reek flog)
+  t.skip_tools = %w(rubocop reek flog flay)
 end
 
 task default: :quality
