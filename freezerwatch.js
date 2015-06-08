@@ -132,8 +132,6 @@ async.map(options.deviceIds,
 
 // XXX: Brainstorm errors to handle, add (manual) tests
 
-// XXX: Crib style hints from optparse
-
 // XXX: get gulp-file with node-quality to replace Rakefile with Quality
 
 // XXX: Figure out style help tool 
