@@ -1,9 +1,3 @@
-Warning
--------
-
-You might find this code useful, but this doesn't actually work yet.  If you make progress on it, go ahead and submit a PR!
-
-
 freezerwatch
 ============
 
