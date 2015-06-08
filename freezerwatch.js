@@ -53,9 +53,6 @@ function parseDeviceIds() {
 
 var options = parseDeviceIds(process.argv);
 
-console.log("options is " + JSON.stringify(options));
-console.log("deviceIds is " + options.deviceIds);
-
 if (!options.mode) {
     usage(options.help, 1);
 }
