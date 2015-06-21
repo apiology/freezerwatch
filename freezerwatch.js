@@ -40,7 +40,7 @@ function parseDeviceIds() {
          'Returns 0 exit code if all sensors are reading ' +
          'within the last day and have full batteries.'],
         ['-v', '--verbose', 'Report debugging information.'],
-        ['-d STRING', '--device STRING',
+        ['-d', '--device STRING',
          "Which device to monitor--specify this argument multiple times to " +
          "monitor multiple devices.  You can find device IDs by logging into " +
          "lacrossealerts.com/login and looking at the link that your " +
