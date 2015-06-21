@@ -52,7 +52,7 @@ function parseDeviceIds() {
 
     parser.banner =
         "Usage: freezerwatch --live " +
-        "--device=\"123\" --device=\"456\" --device=\"789\"";
+        "--device \"123\" --device \"456\" --device \"789\"";
 
     var help = parser.toString();
 
