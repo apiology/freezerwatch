@@ -82,6 +82,13 @@ function parseDeviceIds() {
 
 var options = parseDeviceIds(process.argv);
 
+debug("options is " + JSON.stringify(options));
+debug("deviceIds is " + JSON.stringify(options.deviceIds));
+
+if (options.deviceIds.length == 0) {
+  usage(options.help, 1);
+}
+
 if (!options.mode) {
     usage(options.help, 1);
 }
@@ -103,6 +110,8 @@ function isLive(reading) {
     return new Date(reading.timestamp) > yesterday() &&
         !reading.lowBattery;
 }
+
+debug("Device IDs is " + options.deviceIds);
 
 async.map(options.deviceIds,
           function(deviceId, cb) {
@@ -127,6 +136,7 @@ async.map(options.deviceIds,
                   throw err;
               } else {
                   debug("result is " + JSON.stringify(result));
+                  debug("err is " + JSON.stringify(err));
                   everythingIsLive = result.map(isLive)
                       .reduce(function(everythingElseLive, thisItemLive) {
                           return everythingElseLive && thisItemLive;
