@@ -1,6 +1,6 @@
 {
     "name": "freezerwatch",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Checks whether Lacrosse Alert sensors are giving data",
     "preferGlobal": true,
     "bin": {
