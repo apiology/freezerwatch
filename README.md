@@ -23,7 +23,7 @@ Usage
 npm install freezerwatch
 
 ```sh
-if freezerwatch --live --device="123" --device="456" --device="789"
+if freezerwatch --live --device "123" --device "456" --device "789"
 then
   echo "All monitoring is live and working!"
 else
