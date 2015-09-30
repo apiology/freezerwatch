@@ -10,4 +10,5 @@ Quality::Rake::Task.new do |t|
   t.skip_tools = %w(rubocop reek flog flay)
 end
 
+task test: []
 task default: :quality
